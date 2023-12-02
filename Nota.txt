@@ -4,7 +4,7 @@ Con Visual Studio Code y pluggins ya instalados:
 Botón derecho sobre la carpeta Requerimiento1 -> Pinchar en Open in Integrated Terminal -> escribir en consola: ng serve-o
 Puede pedir instalar los módulos, lo cual se hace con la instrucción en consola: npm install.
 Para comprobar que se cumple con el requisito 1, una vez ejecutado el proyecto y abierto el navegador, se debe pinchar en "Base de datos listados",
-a continuación en Mostrar Tabla que enlaza con datos de otra página. Saldrá el listado de todos los videojuegos y el button de Volver, pinchando sobre el nombre de cualquiera de ellos nos llevará al componente pagina-datos-videojuego que contiene los datos del videojuego seleccionado.
+a continuación en Mostrar Tabla que enlaza con datos de otra página. Saldrá el listado de todos los videojuegos, pinchando sobre el nombre de cualquiera de ellos nos llevará al componente pagina-datos-videojuego que contiene los datos del videojuego seleccionado y el button de Volver a la página anterior.
 
 Requerimiento 2
 Los archivos que hacen de base de datos son datos.service.ts y autenticacion.service.ts
