@@ -1,0 +1,15 @@
+h3 {
+    margin: 0;
+}
+
+td {
+    text-align: center;
+    margin-bottom: 0;
+}
+
+.buttonVolver {
+    padding: 5px;
+    border-radius: 10px; /* Ajusta el radio de los bordes según sea necesario */
+    font-size: 15px; /* Puedes ajustar el tamaño de la fuente según tus preferencias */
+    cursor: pointer;
+  }

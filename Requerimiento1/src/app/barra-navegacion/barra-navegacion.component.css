@@ -1,0 +1,40 @@
+#Menu CSS in-line
+
+h3 {
+    margin: 0;
+    padding: 0;
+}
+
+div {
+    background-color: bisque;
+}
+
+nav a{
+    font-size:16px;
+} 
+
+/*Para que la barra comience a la izquierda del todo*/
+ul{
+    padding:0;
+}
+
+li{
+    /* Para que salgan en horizontal y no en vertical*/
+    display:inline-block;
+    width:12.7%;
+    padding:5px 10px;
+    background-color:rgb(191, 0, 0);
+    border:1px solid #000;
+    text-align:center;
+    color:#ffffff;
+}
+    
+nav li:hover{
+    background-color:rgb(142, 161, 255);
+    color:#000;
+}
+
+a {
+    color: rgb(255, 255, 255); /* Puedes establecer el color del texto según tus preferencias */
+    display: block;
+}

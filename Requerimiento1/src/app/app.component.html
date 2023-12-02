@@ -1,0 +1,15 @@
+<!--Los componentes cabecera, barra-navegacinn y pie-de-pagina son estáticos-->
+<app-cabecera></app-cabecera>
+<app-barra-navegacion></app-barra-navegacion>
+
+<router-outlet>
+<!--Dentro de esta etiqueta se mostarán los diferentes componentes por los que vamos a ir navegando.-->
+</router-outlet>
+
+<app-pie-de-pagina></app-pie-de-pagina>
+
+<!--Si un componente enviase un parametro
+<app-nombreComponenteQueEnvia (parametroEnviado)="recibirParametro($event)"></app-nombreComponenteQueEnvia>
+y si lo recibiese
+<app-nombreComponenteQueRecibe [parametroRecibido]="parametroRecibido"></app-nombreComponenteQueRecibe>
+-->

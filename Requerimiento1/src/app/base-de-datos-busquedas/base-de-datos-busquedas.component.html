@@ -1,0 +1,95 @@
+<div>
+    <h3>Consulta en base de datos a través de búsquedas</h3>
+<div id="divInformaciónDesarrollador">
+    <div id="divTablasCon1Campo">
+    <tr>
+        <td><label for="inp1">Nombre del desarrollador (con tildes):</label></td>
+        <td><input type="text" id="inp1" [(ngModel)]="InputTextNombreDesarrollador2"/></td>
+        <td><button (click)="mostrarTablaDesarrollador()">Buscar desarrollador</button></td>  
+    </tr>
+    </div>
+    <div *ngIf="tablaDesarrolladorVisible">
+    <table>
+        <thead>
+            <tr>
+            <th>Nombre desarrollador</th><th>Fecha fundación</th><th>País</th>
+            </tr>
+        </thead>
+        <tbody>
+            <ng-container *ngFor="let desarrollador of listaDesarrolladores">
+              <!-- Aplica ngIf para mostrar solo las filas que cumplen la condición -->
+              <tr *ngIf="desarrollador.nombreDesarrollador.toLowerCase() === InputTextNombreDesarrollador2_1.toLowerCase()">
+                <td>{{ desarrollador.nombreDesarrollador }}</td>
+                <td>{{ desarrollador.fechaFundacion | date:'dd/MM/yyyy'}}</td>
+                <td>{{ desarrollador.pais }}</td>
+              </tr>
+            </ng-container>
+        </tbody>
+    </table>
+   </div>
+   <div *ngIf="tablaDesarrolladorVisible==false">No existe ningún desarrollador con ese nombre.</div>
+</div>
+<br>
+<div id="divInformaciónPlataforma">
+    <div id="divTablasCon1Campo">
+      <tr>
+        <td><label for="inp2">Nombre de la plataforma (con tildes):</label></td>
+        <td><input type="text" id="inp2" [(ngModel)]="InputTextNombrePlataforma2"/></td>
+        <td><button (click)="mostrarTablaPlataforma()">Buscar plataforma</button></td>  
+    </tr>
+    </div>
+    <div *ngIf="tablaPlataformaVisible">
+    <table>
+        <thead>
+          <tr>
+            <th>Nombre plataforma</th><th>Fabricante</th><th>Fecha lanzamiento</th>
+          </tr>
+        </thead>
+        <tbody>
+          <ng-container *ngFor="let plataforma of listaPlataformas">
+            <!-- Aplica ngIf para mostrar solo las filas que cumplen la condición -->
+            <tr *ngIf="plataforma.nombrePlataforma.toLowerCase() === InputTextNombrePlataforma2_1.toLowerCase()">
+              <td>{{ plataforma.nombrePlataforma }}</td>
+              <td>{{ plataforma.fabricante }}</td>
+              <td>{{ plataforma.fechaLanzamiento | date:'dd/MM/yyyy'}}</td>
+            </tr>
+          </ng-container>
+          </tbody>
+      </table>
+    </div>
+    <div *ngIf="tablaPlataformaVisible==false">No existe ninguna plataforma (videoconsola) con ese nombre.</div>
+</div>
+<br>
+<div id="divInformaciónVideojuego">
+    <div id="divTablasCon1Campo">
+        <tr>
+          <td><label for="inp3">Título de videojuego o desarrollador (con tildes):</label></td>
+          <td><input type="text" id="inp3" [(ngModel)]="InputTextTitulo2"/></td>
+          <td><button (click)="mostrarTablaVideojuego()">Buscar videojuego</button></td>  
+      </tr>
+      </div>
+      <div *ngIf="tablaVideojuegoVisible">
+        <table>
+          <thead>
+            <tr>
+                <th>Portada</th><th>Desarrollador</th><th>Título</th><th>Fecha lanzamiento</th><th>Plataforma</th><th>Género</th>
+            </tr>
+          </thead>
+          <tbody>
+            <ng-container *ngFor="let videojuego of listaVideojuegos">
+              <!-- Aplica ngIf para mostrar solo las filas que cumplen la condición -->
+              <tr *ngIf="videojuego.titulo.toLowerCase() === InputTextTitulo2_1.toLowerCase() || (videojuego.desarrollador?.nombreDesarrollador?.toLowerCase() === InputTextTitulo2_1.toLowerCase())">
+                <td style="width: 8%;"><img [src]="videojuego.portada" style="width: 100%;"></td>
+                <td>{{ videojuego.desarrollador?.nombreDesarrollador }}, {{ videojuego.desarrollador?.pais }}</td>
+                <td>{{ videojuego.titulo }}</td>
+                <td>{{ videojuego.fechaLanzamiento | date:'dd/MM/yyyy'}}</td>
+                <td>{{ videojuego.plataforma?.nombrePlataforma }}</td>
+                <td>{{ videojuego.genero }}</td>
+              </tr>
+            </ng-container>
+            </tbody>
+        </table>
+      </div>
+    <div *ngIf="tablaVideojuegoVisible==false">No existe ningún videojuego con ese título.</div>
+</div>
+</div>

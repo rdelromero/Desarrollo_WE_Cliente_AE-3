@@ -1,0 +1,20 @@
+<!-- Routing o navegación declarativa desde la vista -->
+<!-- 
+  Mediante el atributo routerLink establecemos el 'path' que hemos declarado en
+  el fichero app-routing.module.ts. (NO usamos href!)
+-->
+<div>
+    <h3>Componente barra de navegación</h3>
+    <nav>
+        <ul>
+            <!--<li><a href="javascript:void(0);" (click)="recargarPagina()">Inicio</a></li>-->
+          <li><a routerLink="/portada">PORTADA</a></li>
+          <li><a routerLink="/base-de-datos">Base de datos listados</a></li>
+          <li><a routerLink="/base-de-datos-busquedas">Base de datos búsquedas</a></li>
+          <li><a routerLink="/base-de-datos-modificacion">Modificación base de datos</a></li>
+          <li><a routerLink="/eSports">eSports</a></li>
+          <li><a routerLink="/plataformas">Plataformas</a></li>
+          <li><a href="https://www.vandal.net/">Ir a vandal.net</a></li>
+        </ul>
+    </nav>
+  </div>

@@ -1,0 +1,24 @@
+table {
+    width: 100%;
+  }
+
+h3 {
+    margin: 0;
+    padding: 0;
+}
+
+td {
+    text-align: center; /* Centra el contenido horizontalmente dentro de la celda */
+    padding: 5px;
+    font-size: 20px;
+}
+
+input {
+    padding: 40 px;
+}
+
+.center-div {
+    width: 50%; /* Puedes ajustar el ancho según tus necesidades */
+    margin-left: auto;
+    margin-right: auto;
+}
