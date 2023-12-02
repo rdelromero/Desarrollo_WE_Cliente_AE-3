@@ -1,0 +1,34 @@
+<div>
+    <tr>
+        <td><button class="buttonVolver" (click)="volverPaginaAnterior()">Volver</button></td>
+        <td><h3>Datos del videojuego</h3></td>
+    </tr>
+    <table>
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Portada</th>
+          <th>Nombre desarrollador</th>
+          <th>País</th>
+          <th>Titulo</th>
+          <th>Fecha lanzamienton</th>
+          <th>Nombre plataforma</th>
+          <th>Puntuación media</th>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-container *ngFor="let stock of listaStocksSinUndefined;">
+          <tr *ngIf="stock.videojuego?.titulo==datoRecibido && stock.videojuego?.plataforma?.nombrePlataforma==datoRecibido2">
+            <td>{{stock.id}}</td>
+            <td style="width: 10%;"><img *ngIf="stock.videojuego" [src]="stock.videojuego.portada" style="width: 100%;"></td>
+            <td>{{stock.videojuego?.desarrollador?.nombreDesarrollador}}</td>
+            <td>{{stock.videojuego?.desarrollador?.pais}}</td>
+            <td>{{stock.videojuego?.titulo}}</td>
+            <td>{{stock.videojuego?.fechaLanzamiento | date:'dd/MM/yyyy'}}</td>
+            <td>{{stock.videojuego?.plataforma?.nombrePlataforma}}</td>
+            <td>{{ stock.puntuacionMedia | number:'1.2-2' }}</td>
+          </tr>
+        </ng-container>
+      </tbody>
+    </table>
+</div>

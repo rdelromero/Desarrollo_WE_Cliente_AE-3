@@ -1,0 +1,169 @@
+<div>
+    <h3>Componente base de datos</h3>
+    <div id="divInformaciónAutores">
+        <button (click)="mostrarTablaDesarrolladores()">Mostrar tabla desarrolladores</button>
+        <table *ngIf="tablaDesarrolladoresVisible">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Nombre desarrollador</th>
+              <th>Fecha fundación</th>
+              <th>País</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let desarrollador of listaDesarrolladores">
+              <td>{{ desarrollador.id }}</td>
+              <td>{{ desarrollador.nombreDesarrollador }}</td>
+              <td>{{ desarrollador.fechaFundacion | date:'dd/MM/yyyy' }}</td>
+              <td>{{ desarrollador.pais }}</td>
+            </tr>
+          </tbody>
+        </table>
+    </div>
+    <br>
+    <div>
+      <button (click)="mostrarTablaPlataformas()">Mostrar tabla plataformas</button>
+      <table *ngIf="tablaPlataformasVisible">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nombre plataforma</th>
+            <th>Fabricante</th>
+            <th>Fecha lanzamiento</th>
+            <!--<th>Eliminar</th>-->
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let plataforma of listaPlataformas">
+            <td>{{ plataforma.id }}</td>
+            <td>{{ plataforma.nombrePlataforma }}</td>
+            <td>{{ plataforma.fabricante }}</td>
+            <td>{{ plataforma.fechaLanzamiento ? (plataforma.fechaLanzamiento | date:'dd/MM/yyyy') : 'null' }}</td>
+            <!--<td><button (click)="borrarEditorialPorId(editorial.id)">Eliminar</button></td>-->
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <br>
+    <div>
+      <button (click)="mostrarTablaVideojuegos()">Mostrar tabla videojuegos con datos fijos</button>
+      <table *ngIf="tablaVideojuegosVisible">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Desarrollador</th>
+            <th>Título</th>
+            <th>Fecha lanzamiento</th>
+            <th>Plataforma</th>
+            <th>Género</th>
+          </tr>
+        </thead>
+        <tbody><!--i es el índice en listaNovelas-->
+          <tr *ngFor="let videojuego of listaVideojuegos; let i = index">
+            <td>{{ videojuego.id }}</td>
+            <td *ngIf="videojuego.desarrollador">
+                <button (click)="mostrarDesarrolladorPorNombre(i)">{{videojuego.desarrollador.nombreDesarrollador}}</button>
+                <div *ngIf="indiceSeleccionado1 === i">{{videojuego.desarrollador}}</div>
+            </td>
+            <td *ngIf="videojuego.desarrollador==undefined">undefined</td>
+            <td>{{ videojuego.titulo }}</td>
+            <td>{{ videojuego.fechaLanzamiento | date:'dd/MM/yyyy' }}</td>
+            <td *ngIf="videojuego.plataforma">
+              <button (click)="mostrarPlataformaPorNombre(i)">{{videojuego.plataforma.nombrePlataforma}}</button>
+              <div *ngIf="indiceSeleccionado2 === i">{{videojuego.plataforma}}</div>
+            </td>
+            <td *ngIf="videojuego.plataforma==undefined">undefined</td>
+            <td>{{ videojuego.genero}}</td>
+          </tr>
+          <tr *ngIf="listaVideojuegos.length === 0">
+            <td class="rojo" colspan="5">
+              No se han encontrado videojuegos.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <br>
+    <div>
+        <button (click)="mostrarTablaStocks()">Mostrar tabla videojuegos con todo</button>
+        <table *ngIf="tablaStocksVisible">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Videojuego</th>
+              <th>N.º puntuaciones</th>
+              <th>Puntuación media</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let stock of listaStocks">
+              <td>{{ stock.id }}</td>
+              <td>{{ stock.videojuego }}</td>
+              <td>{{ stock.nPuntuaciones }}</td>
+              <td>{{ stock.puntuacionMedia.toFixed(2) }}</td>
+            </tr>
+            <tr *ngIf="listaStocks.length === 0">
+              <td class="rojo" colspan="3">
+                No se han encontrado stocks.
+              </td>
+            </tr>
+          </tbody>
+        </table>
+    </div>
+    <br>
+    <div>
+        <button (click)="mostrarTablaStocksSinUndefined()">Mostrar tabla videojuegos con todo y sin undefined</button>
+        <table *ngIf="tablaStocksSinUndefinedVisible">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Videojuego</th>
+              <th>N.º puntuaciones</th>
+              <th>Puntuación media</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let stock of listaStocksSinUndefined">
+              <td>{{ stock.id }}</td>
+              <td>{{ stock.videojuego }}</td>
+              <td>{{ stock.nPuntuaciones }}</td>
+              <td>{{ stock.puntuacionMedia.toFixed(2) }}</td>
+            </tr>
+            <tr *ngIf="listaStocks.length === 0">
+              <td class="rojo" colspan="3">
+                No se han encontrado stocks.
+              </td>
+            </tr>
+          </tbody>
+        </table>
+    </div>
+    <br>
+    <div>
+        <button (click)="mostrarTablaStocksSinUndefined2()">Mostrar tabla que enlaza con datos otra página</button>
+        <table *ngIf="tablaStocksSinUndefinedVisible2">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Nombre videojuego</th>
+              <th>Puntuación media</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let stock of listaStocksSinUndefined">
+              <td>{{ stock.id }}</td>
+              <td *ngIf="stock.videojuego && stock.videojuego.plataforma" >
+                  <button id="divEnTd" (click)="siguientePagina('/pagina-datos-videojuego', stock.videojuego.titulo, stock.videojuego.plataforma.nombrePlataforma)">{{stock.videojuego.titulo}}</button>            
+                </td>
+              <td>{{ stock.puntuacionMedia }}</td>
+            </tr>
+            <tr *ngIf="listaStocks.length === 0">
+              <td class="rojo" colspan="3">
+                No se han encontrado stocks.
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+</div>

@@ -1,0 +1,19 @@
+<div>
+    <header>
+      <h3>Componente cabecera</h3>
+      <table>
+        <tr>
+          <td><a routerLink="/portada">Página de videojuegos</a></td>
+          <td>
+            <label for="inp1"></label>
+            <input type="text" id="inp1" style="width: 250px; height: 25px;" placeholder ="Búsqueda por videojuego, plataforma"/>
+            <button style="height: 25px;" routerLink="/resultados-busqueda" disabled>Buscar videojuegos</button>
+            <!--<input type="text" id="inp1" style="width: 250px; height: 25px;" placeholder ="Búsqueda por videojuego, plataforma" [(ngModel)]="InputTextTituloStockCarrito"/>
+            <button style="height: 25px;" routerLink="/resultados-busqueda" (click)="enviarParametro()">Buscar videojuegos</button>-->
+          </td>
+          <td><a routerLink="/perfil">Hola {{stringInputDefinidoEnComponenteCabecera}}</a></td>
+        </tr>
+      </table>
+      <br>
+    </header>
+</div>

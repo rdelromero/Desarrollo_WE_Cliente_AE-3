@@ -1,0 +1,60 @@
+<div>
+    <div>
+        <h3>Componente modificación de base de datos</h3>
+        <div>
+          <label for="inp1">ID del desarrollador que quiere borrar: </label>
+          <input type="text" id="inp1" [(ngModel)]="InputTextDesarrolladorABorrar"/>
+          <button (click)="borrarDesarrolladorPorId(InputTextDesarrolladorABorrar)">borrar</button><br>
+          <div *ngIf="desarrolladorBorradoVisible">Desarrollador borrado</div>
+          <div *ngIf="desarrolladorBorradoVisible == false">No existe ningúna autor con ese id</div>
+        </div>
+        <br>
+        <div>
+          <label for="inp2">ID de la plataforma (consola) que quiere borrar: </label>
+          <input type="text" id="inp2" [(ngModel)]="InputTextEditorialABorrar"/>
+          <button (click)="borrarPlataformaPorId(InputTextEditorialABorrar)">borrar</button><br>
+          <div *ngIf="plataformaBorradaVisible">Editorial borrada</div>
+          <div *ngIf="plataformaBorradaVisible == false">No existe ninguna editorial con ese id</div>
+        </div>
+        <br>
+        <div>
+          <label for="inp3">ID del videojuego que quiere borrar: </label>
+          <input type="text" id="inp3" [(ngModel)]="InputTextNovelaABorrar"/>
+          <button (click)="borrarPlataformaPorId(InputTextNovelaABorrar)">borrar</button><br>
+          <div *ngIf="videojuegoBorradoVisible">Novela borrada</div>
+          <div *ngIf="videojuegoBorradoVisible == false">No existe ninguna novela con ese id</div>
+        </div>
+    </div>
+    <br>
+    <div>
+        <button (click)="mostrarTablaStocksSinUndefined()">Mostrar tabla stocks sin undefined</button>
+        <table *ngIf="tablaStocksSinUndefinedVisible">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Videojuego</th>
+              <th>N.º puntuaciones</th>
+              <th>Puntuación media</th>
+              <th>Su puntuación</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let stock of listaStocksSinUndefined; let i = index">
+              <td>{{ stock.id }}</td>
+              <td>{{ stock.videojuego }}</td>
+              <td>{{ stock.nPuntuaciones }}</td>
+              <td>{{ stock.puntuacionMedia | number:'1.2-2'}}</td>
+              <td>
+                <input type="number" min="1" max="10" [(ngModel)]="inputNumberPuntuacion[i]" (keydown)="bloquearEntradaPorTeclado($event)"><br>
+                <button (click)="actualizarPuntuacionMedia(stock, inputNumberPuntuacion[i], i)" [disabled]="buttonPuntuacionDesabilitado[i]">Puntuar</button>
+                </td>
+            </tr>
+            <tr *ngIf="listaStocksSinUndefined.length === 0">
+              <td class="rojo" colspan="3">
+                No se han encontrado stocks.
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
