@@ -19,13 +19,14 @@ export class BaseDeDatosBusquedasComponent implements OnInit {
 
 /*---------------------------Desarrolladores-------------------------------------------*/
 InputTextNombreDesarrollador2: string =''
-InputTextNombreDesarrollador2_1: string ='';
+InputTextNombreDesarrollador2ConMayusculasYTildes: string ='';
 tablaDesarrolladorVisible: boolean | null = null;
 mostrarTablaDesarrollador() : void{
-  this.InputTextNombreDesarrollador2_1 = this.InputTextNombreDesarrollador2;
-  const Desarrollador = this.funcionesService.devuelveDesarrolladorPorNombre(this.InputTextNombreDesarrollador2_1);
-    if (Desarrollador) {
+  const desarrollador = this.funcionesService.devuelveDesarrolladorPorNombre(this.InputTextNombreDesarrollador2);
+    if (desarrollador) {
+      this.InputTextNombreDesarrollador2ConMayusculasYTildes = desarrollador.nombreDesarrollador;
       this.tablaDesarrolladorVisible = true;
+
     }
     else {
       this.tablaDesarrolladorVisible = false;
@@ -34,12 +35,12 @@ mostrarTablaDesarrollador() : void{
 
   /*---------------------------Plataformas-------------------------------------------*/
   InputTextNombrePlataforma2: string =''
-  InputTextNombrePlataforma2_1: string ='';
+  InputTextNombrePlataforma2ConMayusculasYTildes: string ='';
   tablaPlataformaVisible: boolean | null = null;
   mostrarTablaPlataforma() : void{
-    this.InputTextNombrePlataforma2_1 = this.InputTextNombrePlataforma2;
-    const plataforma = this.funcionesService.devuelvePlataformaPorNombre(this.InputTextNombrePlataforma2_1);
+    const plataforma = this.funcionesService.devuelvePlataformaPorNombre(this.InputTextNombrePlataforma2);
       if (plataforma) {
+        this.InputTextNombrePlataforma2ConMayusculasYTildes = plataforma.nombrePlataforma;
         this.tablaPlataformaVisible = true;
       }
       else {
@@ -49,12 +50,15 @@ mostrarTablaDesarrollador() : void{
 
   /*----------------------------------------Videojuegos----------------------------------------*/
   InputTextTitulo2: string =''
-  InputTextTitulo2_1: string ='';
+  inputTextTitulo2ConMayusculasYTildes: string ='';
+  inputTextDesarrollador2ConMayusculasYTildes: string | undefined = undefined;
   tablaVideojuegoVisible: boolean | null = null;
   mostrarTablaVideojuego()  {
-    this.InputTextTitulo2_1 = this.InputTextTitulo2;
     for (const videojuego of this.listaVideojuegos) {
-      if (this.InputTextTitulo2_1.toLocaleLowerCase() == videojuego.titulo.toLowerCase() || (videojuego.desarrollador && this.InputTextTitulo2_1.toLowerCase() == videojuego.desarrollador.nombreDesarrollador.toLowerCase())) {
+      if (this.InputTextTitulo2.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "") == videojuego.titulo.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "") || (videojuego.desarrollador && this.InputTextTitulo2.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "") == videojuego.desarrollador.nombreDesarrollador.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, ""))) {
+        this.inputTextTitulo2ConMayusculasYTildes = videojuego.titulo;
+        console.log(this.inputTextTitulo2ConMayusculasYTildes);
+        this.inputTextDesarrollador2ConMayusculasYTildes = videojuego.desarrollador?.nombreDesarrollador;
         this.tablaVideojuegoVisible = true;
         return;
       }

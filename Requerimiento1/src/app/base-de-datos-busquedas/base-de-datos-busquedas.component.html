@@ -1,9 +1,11 @@
 <div>
-    <h3>Consulta en base de datos a través de búsquedas</h3>
+    <h3>Consulta en base de datos a través de búsquedas.</h3>
+    Las resultados son independientes de la presencia de mayúsculas o tildes.<br>
+    <br>
 <div id="divInformaciónDesarrollador">
     <div id="divTablasCon1Campo">
     <tr>
-        <td><label for="inp1">Nombre del desarrollador (con tildes):</label></td>
+        <td><label for="inp1">Nombre del desarrollador:</label></td>
         <td><input type="text" id="inp1" [(ngModel)]="InputTextNombreDesarrollador2"/></td>
         <td><button (click)="mostrarTablaDesarrollador()">Buscar desarrollador</button></td>  
     </tr>
@@ -18,7 +20,7 @@
         <tbody>
             <ng-container *ngFor="let desarrollador of listaDesarrolladores">
               <!-- Aplica ngIf para mostrar solo las filas que cumplen la condición -->
-              <tr *ngIf="desarrollador.nombreDesarrollador.toLowerCase() === InputTextNombreDesarrollador2_1.toLowerCase()">
+              <tr *ngIf="desarrollador.nombreDesarrollador === InputTextNombreDesarrollador2ConMayusculasYTildes">
                 <td>{{ desarrollador.nombreDesarrollador }}</td>
                 <td>{{ desarrollador.fechaFundacion | date:'dd/MM/yyyy'}}</td>
                 <td>{{ desarrollador.pais }}</td>
@@ -33,7 +35,7 @@
 <div id="divInformaciónPlataforma">
     <div id="divTablasCon1Campo">
       <tr>
-        <td><label for="inp2">Nombre de la plataforma (con tildes):</label></td>
+        <td><label for="inp2">Nombre de la plataforma:</label></td>
         <td><input type="text" id="inp2" [(ngModel)]="InputTextNombrePlataforma2"/></td>
         <td><button (click)="mostrarTablaPlataforma()">Buscar plataforma</button></td>  
     </tr>
@@ -48,7 +50,7 @@
         <tbody>
           <ng-container *ngFor="let plataforma of listaPlataformas">
             <!-- Aplica ngIf para mostrar solo las filas que cumplen la condición -->
-            <tr *ngIf="plataforma.nombrePlataforma.toLowerCase() === InputTextNombrePlataforma2_1.toLowerCase()">
+            <tr *ngIf="plataforma.nombrePlataforma === InputTextNombrePlataforma2ConMayusculasYTildes">
               <td>{{ plataforma.nombrePlataforma }}</td>
               <td>{{ plataforma.fabricante }}</td>
               <td>{{ plataforma.fechaLanzamiento | date:'dd/MM/yyyy'}}</td>
@@ -63,7 +65,7 @@
 <div id="divInformaciónVideojuego">
     <div id="divTablasCon1Campo">
         <tr>
-          <td><label for="inp3">Título de videojuego o desarrollador (con tildes):</label></td>
+          <td><label for="inp3">Título de videojuego o nombre de desarrollador:</label></td>
           <td><input type="text" id="inp3" [(ngModel)]="InputTextTitulo2"/></td>
           <td><button (click)="mostrarTablaVideojuego()">Buscar videojuego</button></td>  
       </tr>
@@ -78,7 +80,7 @@
           <tbody>
             <ng-container *ngFor="let videojuego of listaVideojuegos">
               <!-- Aplica ngIf para mostrar solo las filas que cumplen la condición -->
-              <tr *ngIf="videojuego.titulo.toLowerCase() === InputTextTitulo2_1.toLowerCase() || (videojuego.desarrollador?.nombreDesarrollador?.toLowerCase() === InputTextTitulo2_1.toLowerCase())">
+              <tr *ngIf="videojuego.titulo === inputTextTitulo2ConMayusculasYTildes || (videojuego.desarrollador?.nombreDesarrollador === inputTextDesarrollador2ConMayusculasYTildes)">
                 <td style="width: 8%;"><img [src]="videojuego.portada" style="width: 100%;"></td>
                 <td>{{ videojuego.desarrollador?.nombreDesarrollador }}, {{ videojuego.desarrollador?.pais }}</td>
                 <td>{{ videojuego.titulo }}</td>
